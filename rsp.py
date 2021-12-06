@@ -1,40 +1,31 @@
 import random
-choices = ["Rock", "Paper", "Scissors"]
-computer = random.choice(choices)
-player = False
-cpu_score = 0
-player_score = 0
-while True:
-    player = input("Rock, Paper or  Scissors?").capitalize()
-    ## Conditions of Rock,Paper and Scissors
-    if player == computer:
-        print("Tie!")
-    elif player == "Rock":
-        if computer == "Paper":
-            print("You lose!", computer, "covers", player)
-            cpu_score+=1
-        else:
-            print("You win!", player, "smashes", computer)
-            player_score+=1
-    elif player == "Paper":
-        if computer == "Scissors":
-            print("You lose!", computer, "cut", player)
-            cpu_score+=1
-        else:
-            print("You win!", player, "covers", computer)
-            player_score+=1
-    elif player == "Scissors":
-        if computer == "Rock":
-            print("You lose...", computer, "smashes", player)
-            cpu_score+=1
-        else:
-            print("You win!", player, "cut", computer)
-            player_score+=1
-    elif player=='E':
-        print("Final Scores:")
-        print(f"CPU:{cpu_score}")
-        print(f"Plaer:{player_score}")
-        break
-    else:
-        print("That's not a valid play. Check your spelling!")
-    computer = random.choice(choices)
+import re
+class Myrps:
+    def Rps(self):
+        while (1 < 2):
+            print("\n")
+            print("Rock, Paper, Scissors - Shoot!")
+            userChoice = input("Choose your weapon [R]ock], [P]aper, or [S]cissors: ")
+            if not re.match("[SsRrPp]", userChoice):
+                print("Please choose a letter:")
+                print("[R]ock, [S]cissors or [P]aper.")
+                continue
+            print("My Choice: " + userChoice)
+            choices = ['R', 'P', 'S']
+            opponenetChoice = random.choice(choices)
+            print("computer Choice: " + opponenetChoice)
+            if opponenetChoice == str.upper(userChoice):
+                print("Tie! ")
+            elif opponenetChoice == 'R' and userChoice.upper() == 'S':
+                print("Scissors beats rock, Computer win! ")
+                continue
+            elif opponenetChoice == 'S' and userChoice.upper() == 'P':
+                print("Scissors beats paper! computer win! ")
+                continue
+            elif opponenetChoice == 'P' and userChoice.upper() == 'R':
+                print("Paper beat rock, computer win! ")
+            else:
+                print("You win!")
+obj=Myrps()
+obj.Rps()
+
